@@ -76,7 +76,7 @@ def python(bot, update):
 
 def hi(bot, update):
     logger.info('hi call')
-    update.message.reply_text('Hi~Reibabot愛你哦！\t<3')
+    update.message.reply_text('Hi~ @Reibabot 愛你哦！\t<3')
 
 def error(bot, update, error):
     logger.warn('Update "%s" caused error "%s"' % (update, error))
