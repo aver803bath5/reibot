@@ -74,6 +74,10 @@ def python(bot, update):
     logger.info('python called')
     update.message.reply_sticker(sticker='CAADBAADBwEAApdrhgTKSboZY8XAKgI')
 
+def hi(bot, update):
+    logger.info('hi call')
+    update.message.reply_text('Hi~Reibabot愛你哦！\t<3')
+
 def error(bot, update, error):
     logger.warn('Update "%s" caused error "%s"' % (update, error))
 
@@ -84,6 +88,7 @@ def main():
     updater = Updater(token)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('start', start))
+    dp.add_handler(RegexHandler(u'hi|Hi|HI|hello|Hello|HELLO', hi))
     dp.add_handler(RegexHandler(u'女朋友', girlfriend))
     dp.add_handler(RegexHandler(u'老婆', wifu))
     dp.add_handler(RegexHandler(u'軟體', software))
