@@ -21,19 +21,30 @@ def start(bot, update):
 def girlfriend(bot, update):
     logger.info("girlfriend called")
     search = '初音未來'
-    header = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36'}
+    headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36'}
     url = 'https://www.google.com.tw/search?q='+ quote(search) +'&source=lnms&tbm=isch'
-    r = requests.get(url, {'headers': header})
-    soup = BeautifulSoup(r.text, "parse.html")
+    r = requests.get(url, headers=headers)
+    soup = BeautifulSoup(r.text, 'html.parser')
     data = soup.find_all('div',{'class':'rg_meta'})
     pick_num = random.randint(0, len(data))
-    link , Type =json.loads(data[pick_num].text)["ou"]  ,json.loads(data[pick_num].text)["ity"]
+    link , Type =json.loads(data[pick_num].text)['ou']  ,json.loads(data[pick_num].text)['ity']
     logger.info('sent image '+link)
     update.message.reply_photo('這是我女朋友給你看看\n' + link)
 
 def software(bot,update):
     logger.info("software called")
     update.message.reply_text(u"初音不是軟體，你才軟體，你全家都軟體！")
+
+def one_hundred(bot, update):
+    search = '超過100分'
+    headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36'}
+    url = 'https://www.google.com.tw/search?q='+ quote(search) +'&source=lnms&tbm=isch'
+    r = requests.get(url, headers=headers)
+    soup = BeautifulSoup(r.text, 'html.parser')
+    data = soup.find('div',{'class':'rg_meta'})
+    link , Type =json.loads(data.text)['ou']  ,json.loads(data.text)['ity']
+    logger.info('one_hundred called')
+    update.message.reply_photo(link)
 
 def error(bot, update, error):
     logger.warn('Update "%s" caused error "%s"' % (update, error))
