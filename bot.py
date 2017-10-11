@@ -28,8 +28,21 @@ def girlfriend(bot, update):
     data = soup.find_all('div',{'class':'rg_meta'})
     pick_num = random.randint(0, len(data))
     link , Type =json.loads(data[pick_num].text)['ou']  ,json.loads(data[pick_num].text)['ity']
-    logger.info('sent image '+link)
+    logger.info('sent girlfriend image '+link)
     update.message.reply_photo('這是我女朋友給你看看\n' + link)
+
+def wifu(bot, update):
+    logger.info("wifu called")
+    search = '新垣結衣'
+    headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36'}
+    url = 'https://www.google.com.tw/search?q='+ quote(search) +'&source=lnms&tbm=isch'
+    r = requests.get(url, headers=headers)
+    soup = BeautifulSoup(r.text, 'html.parser')
+    data = soup.find_all('div',{'class':'rg_meta'})
+    pick_num = random.randint(0, len(data))
+    link , Type =json.loads(data[pick_num].text)['ou']  ,json.loads(data[pick_num].text)['ity']
+    logger.info('sent wifu image '+link)
+    update.message.reply_photo('這是我老婆給你看看\n' + link)
 
 def software(bot,update):
     logger.info("software called")
@@ -57,7 +70,9 @@ def main():
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('start', start))
     dp.add_handler(RegexHandler(u'女朋友', girlfriend))
+    dp.add_handler(RegexHandler(u'老婆', wifu))
     dp.add_handler(RegexHandler(u'軟體', software))
+    dp.add_handler(RegexHandler(u'100分|一百分', one_hundred))
     dp.add_error_handler(error)
     updater.start_polling()
     updater.idle()
