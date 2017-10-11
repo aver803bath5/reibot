@@ -29,7 +29,8 @@ def girlfriend(bot, update):
     pick_num = random.randint(0, len(data))
     link , Type =json.loads(data[pick_num].text)['ou']  ,json.loads(data[pick_num].text)['ity']
     logger.info('sent girlfriend image '+link)
-    update.message.reply_photo('這是我女朋友給你看看\n' + link)
+    update.message.reply_photo(link)
+    update.message.reply_text('這是我女朋友給你看看\n')
 
 def wifu(bot, update):
     logger.info("wifu called")
@@ -42,7 +43,8 @@ def wifu(bot, update):
     pick_num = random.randint(0, len(data))
     link , Type =json.loads(data[pick_num].text)['ou']  ,json.loads(data[pick_num].text)['ity']
     logger.info('sent wifu image '+link)
-    update.message.reply_photo('這是我老婆給你看看\n' + link)
+    update.message.reply_photo(link)
+    update.message.reply_text('這是我老婆給你看看')
 
 def software(bot,update):
     logger.info("software called")
