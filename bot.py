@@ -48,6 +48,7 @@ def wifu(bot, update):
 
 def software(bot,update):
     logger.info("software called")
+    update.message.reply_sticker(sticker='CAADBQADRAADjMA0B0Y39ygLDWXbAg')
     update.message.reply_text(u"初音不是軟體，你才軟體，你全家都軟體！")
 
 def one_hundred(bot, update):
@@ -60,6 +61,14 @@ def one_hundred(bot, update):
     link , Type =json.loads(data.text)['ou']  ,json.loads(data.text)['ity']
     logger.info('one_hundred called')
     update.message.reply_photo(link)
+
+def affraid(bot, update):
+    logger.info("no money called")
+    update.message.reply_sticker(sticker='CAADBQADTgADVRXrCVFQ913jCk08Ag')
+
+def python(bot, update):
+    logger.info('python called')
+    update.message.reply_sticker(sticker='CAADBAADBwEAApdrhgTKSboZY8XAKgI')
 
 def error(bot, update, error):
     logger.warn('Update "%s" caused error "%s"' % (update, error))
