@@ -51,6 +51,10 @@ def software(bot,update):
     update.message.reply_sticker(sticker='CAADBQADRAADjMA0B0Y39ygLDWXbAg')
     update.message.reply_text(u"初音不是軟體，你才軟體，你全家都軟體！")
 
+def loli(bot, update):
+    logger.info('loli cadded')
+    update.message.reply_sticker(sticker='CAADBQADOQEAAn-OxwF3W-HPPzJZoQI')
+
 def one_hundred(bot, update):
     search = '超過100分'
     headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36'}
@@ -64,7 +68,7 @@ def one_hundred(bot, update):
 
 def affraid(bot, update):
     logger.info("no money called")
-    update.message.reply_sticker(sticker='CAADBQADTgADVRXrCVFQ913jCk08Ag')
+    update.message.reply_sticker(sticker='CAADAgAD6CIAAuCjggeZXXVZHSnL8AI')
 
 def python(bot, update):
     logger.info('python called')
@@ -84,6 +88,9 @@ def main():
     dp.add_handler(RegexHandler(u'老婆', wifu))
     dp.add_handler(RegexHandler(u'軟體', software))
     dp.add_handler(RegexHandler(u'100分|一百分', one_hundred))
+    dp.add_handler(RegexHandler(u'怕', affraid))
+    dp.add_handler(RegexHandler(u'python', python))
+    dp.add_handler(RegexHandler(u'蘿莉', loli))
     dp.add_error_handler(error)
     updater.start_polling()
     updater.idle()
