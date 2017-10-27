@@ -32,6 +32,20 @@ def girlfriend(bot, update):
     update.message.reply_photo(link)
     update.message.reply_text('這是我女朋友給你看看\n')
 
+def sister(bot, update):
+    logger.info("sister called")
+    search = '初音未來'
+    headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36'}
+    url = 'https://www.google.com.tw/search?q='+ quote(search) +'&source=lnms&tbm=isch'
+    r = requests.get(url, headers=headers)
+    soup = BeautifulSoup(r.text, 'html.parser')
+    data = soup.find_all('div',{'class':'rg_meta'})
+    pick_num = random.randint(0, len(data))
+    link , Type =json.loads(data[pick_num].text)['ou']  ,json.loads(data[pick_num].text)['ity']
+    logger.info('sent girlfriend image '+link)
+    update.message.reply_photo(link)
+    update.message.reply_text('這是我女朋友給你看看\n')
+
 def wifu(bot, update):
     logger.info("wifu called")
     search = '新垣結衣'
@@ -67,7 +81,7 @@ def one_hundred(bot, update):
     update.message.reply_photo(link)
 
 def affraid(bot, update):
-    logger.info("no money called")
+    logger.info("affraid called")
     update.message.reply_sticker(sticker='CAADAgAD6CIAAuCjggeZXXVZHSnL8AI')
 
 def python(bot, update):
