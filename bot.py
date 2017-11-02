@@ -106,7 +106,7 @@ def main():
     dp.add_handler(RegexHandler(u'女朋友', girlfriend))
     dp.add_handler(RegexHandler(u'老婆', wifu))
     dp.add_handler(RegexHandler(u'軟體', software))
-    dp.add_handler(RegexHandler(u'100分|一百分', one_hundred))
+    dp.add_handler(RegexHandler(u'100分|一百分|超過100分|超過一百分', one_hundred))
     dp.add_handler(RegexHandler(u'怕', affraid))
     dp.add_handler(RegexHandler(u'python', python))
     dp.add_handler(RegexHandler(u'蘿莉', loli))
